@@ -50,10 +50,11 @@ class Full_Test(unittest.TestCase):
         self.login.submit()
 
         self.driver.implicitly_wait(2)
-        self.invalidmessage = self.driver.find_element_by_tag_name('p')
-        assert self.invalidmessage.text == 'Your login attempt was not successful.'
-        if self.invalidmessage.text == u'Your login attempt was not successful.':
-            print ("Verify invalid login:")
+        time.sleep(4)
+        self.testlogin = self.driver.find_element_by_xpath('/html/body/oid-app/my-app/div[3]/div[2]/connections-tree-component/div/tree-root/tree-viewport/div/div/tree-node-collection/div/tree-node[2]/div/tree-node-wrapper/div/div/tree-node-content/span')
+        assert self.testlogin.text == 'Search All Connections'
+        if self.testlogin.text == u'Search All Connections':
+            print ("Verify valid login:")
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)
